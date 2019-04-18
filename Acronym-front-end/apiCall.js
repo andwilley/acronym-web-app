@@ -1,5 +1,5 @@
 const http = new XMLHttpRequest();
-const url = "http://tron.alohaspark.org/acronyms?bullets=";
+const url = "http://localhost:8080/acronyms?bullets=";
 
 apiCall = function(bullets) {
     http.open("GET", url + bullets);
@@ -8,22 +8,24 @@ apiCall = function(bullets) {
 };
 
 http.onreadystatechange = function(e){
+    if(http.readyState === 4 && http.status === 200) {
+        console.log('text', http.responseText)
+        let responseObject = JSON.parse(http.responseText);
+        let numAcronyms = responseObject.acronyms.length;
+        let textOutput = "";
 
-    let responseObject = JSON.parse(http.responseText);
-    let numAcronyms = responseObject.acronyms.length;
-    let textOutput = "";
+        
 
-    
+        for (i=0;i<numAcronyms;i++) {
+            let tempDef = responseObject.acronyms[i].definition;
+            let tempName = responseObject.acronyms[i].name;
+            textOutput += tempDef + " (" + tempName + "); ";
+        };
+        textOutput=textOutput.substring(0,textOutput.length-2);
 
-    for (i=0;i<numAcronyms;i++) {
-        let tempDef = responseObject.acronyms[i].definition;
-        let tempName = responseObject.acronyms[i].name;
-        textOutput += tempDef + " (" + tempName + "); ";
-    };
-    textOutput=textOutput.substring(0,textOutput.length-2);
-
-    $("#outputText").val(textOutput);
-    console.log(http.responseText);
+        $("#outputText").val(textOutput);
+        console.log(http.responseText);
+    }
 }
 
 console.log("loaded");

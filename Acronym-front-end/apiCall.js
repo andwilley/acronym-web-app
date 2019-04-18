@@ -1,5 +1,5 @@
 const http = new XMLHttpRequest();
-const url = "http://localhost:8080/acronyms?bullets=";
+const url = "http://tron.alohaspark.org/acronyms?bullets=";
 
 apiCall = function(bullets) {
     http.open("GET", url + bullets);

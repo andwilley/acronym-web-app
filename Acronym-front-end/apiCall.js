@@ -9,7 +9,6 @@ apiCall = function(bullets) {
 
 http.onreadystatechange = function(e){
     if(http.readyState === 4 && http.status === 200) {
-        console.log('text', http.responseText)
         let responseObject = JSON.parse(http.responseText);
         let numAcronyms = responseObject.acronyms.length;
         let textOutput = "";

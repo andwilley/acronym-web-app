@@ -2,19 +2,24 @@
 
 ## Container Setup
 
-application.properties:
+### Changes to the app
+#### application.properties:
 
 spring.data.mongodb.uri=mongodb://acronym-mongo-db:27017/start
 
-apiCall.js:
+#### apiCall.js:
 
 const url = "http://localhost:8080/acronyms?bullets=";
+
+### Building Containers
 
 from proj_root/MongoDocker/: docker build -t acronym-mongo-db .
 
 from proj_root/: docker build -t acronym-web-app .
 
 from proj_root/Acronym-front-end: docker build -t acronym-front-end .
+
+### Running Containers
 
 docker network create acronym-net
 

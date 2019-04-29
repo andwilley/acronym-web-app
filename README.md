@@ -27,4 +27,4 @@ docker run -d --rm --name acronym-mongo-db --net acronym-net acronym-mongo-db:la
 
 docker run -d --rm -p 8080:8080 --name acronym-web-app --net acronym-net acronym-web-app:latest
 
-docker run -d --rm -p 8000:80 --name acronym-front-end acronym-front-end:latest
+docker run -d --rm -p 80:80 --name acronym-front-end acronym-front-end:latest

@@ -1,7 +1,6 @@
 package org.alohaspark.tron.acronymwebapp;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,16 +44,16 @@ public class AcronymController {
 
 
        String regex1 = "([A-Z]+)?(\\d|\\w&\\w|\\w-\\w|\\w/\\w)([A-Z]*)?\\d*(?=\\s)|([A-Z]{2,})";
-       Pattern pattern = Pattern.compile(regex1); 
-        
-       Matcher m = pattern.matcher(bullets); 
-       
+       Pattern pattern = Pattern.compile(regex1);
+
+       Matcher m = pattern.matcher(bullets);
+
        ArrayList<String> foundAcros = new ArrayList<String>();
 
-       // Print starting and ending indexes of the pattern 
-       // in text 
+       // Print starting and ending indexes of the pattern
+       // in text
        while (m.find()) {
-           System.out.println("Pattern found from " + m.start() + " to " + (m.end()-1)); 
+           System.out.println("Pattern found from " + m.start() + " to " + (m.end()-1));
            System.out.println(m.group(0));
            foundAcros.add(m.group(0));
        }
@@ -63,7 +62,7 @@ public class AcronymController {
        System.out.println(x);
     }
         Collections.sort(foundAcros);
-        
+
         //
         //String[] acs = {"AAs","CGO","NCO"};
         for (String ac : foundAcros) {
